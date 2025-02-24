@@ -1,0 +1,19 @@
+.nav-bar {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 0 0 0 2%;
+  border-bottom: 1px solid #00000025;
+  position: sticky;
+  top: 0;
+}
+
+.nav-bar h1 {
+  font-family: "Roboto", serif;
+  font-weight: 700;
+  font-size: 30px;
+}
+
+.nav-bar span {
+  font-weight: 400;
+}

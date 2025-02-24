@@ -1,0 +1,11 @@
+
+.blog-container{
+    height: 100%;
+    width: 100%;
+    /* background-color: pink; */
+    padding-top: 10%;
+}
+
+.blog-container{
+    font-size: 20px;
+}
