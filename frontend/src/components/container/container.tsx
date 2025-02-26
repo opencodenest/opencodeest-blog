@@ -1,4 +1,5 @@
 import BlogContainer from '../blog-container/blog-container'
+import BlogListContainer from '../blog-list-container/blog-list-container';
 import './container.css'
 import { useState } from 'react'
 
@@ -37,7 +38,8 @@ function Container() {
   };
   return (
     <div className="flex justify-center h-full w-full">
-      <BlogContainer {... test}/>
+      {/* <BlogContainer {... test}/> */}
+      <BlogListContainer/>
     </div>
   )
 }
