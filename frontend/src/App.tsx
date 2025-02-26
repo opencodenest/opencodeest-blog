@@ -8,7 +8,7 @@ import Container from './components/container/container'
 function App() {
 
   return (
-    <div className="main-container">
+    <div className="main-container h-full w-full">
     <NavBar/>
     <Container/>
     {/* <h1>hello</h1> */}

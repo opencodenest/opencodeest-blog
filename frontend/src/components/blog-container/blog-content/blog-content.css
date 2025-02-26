@@ -1,4 +1,14 @@
 .blog-content h3 {
+    font-size: 1.2rem;
+    font-weight: normal;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: #000000;
+    font-weight: 700;
+  }
+
+
+.blog-content h2{
     font-size: 1.5rem;
     font-weight: normal;
     margin-top: 1.5rem;
@@ -6,3 +16,48 @@
     color: #000000;
     font-weight: 700;
   }
+
+  .blog-content p, img, blockquote {
+    margin-top: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+
+.blog-content strong{
+    font-weight: 600;
+    color: #202020;
+}
+
+.blog-content pre{
+    border-radius: 10px;
+}
+
+::marker {
+    unicode-bidi: isolate;
+    font-variant-numeric: tabular-nums;
+    text-transform: none;
+    text-indent: 0px !important;
+    text-align: start !important;
+    text-align-last: start !important;
+}
+
+.blog-content ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+}
+
+
+.blog-content table {
+    @apply w-full border-collapse border;
+}
+
+.blog-content th,tr,td {
+    @apply border text-center;
+}
+
+.blog-content td {
+    @apply border;
+}
+
+pre{
+    padding: 15px !important;
+}

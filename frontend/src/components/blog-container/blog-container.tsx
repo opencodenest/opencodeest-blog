@@ -12,7 +12,6 @@ interface BlogPostDataProps {
 
 function BlogContainer( blogdata : BlogPostDataProps) {
   return (
-    <>
       <div className="pl-4 pr-4 sm:pl-0 sm:pr-0 pt-30 w-200 h-full text-lg">
         <BlogHeader
           title={blogdata.title}
@@ -22,8 +21,6 @@ function BlogContainer( blogdata : BlogPostDataProps) {
         />
       <BlogContent content={blogdata.content}/>
       </div>
-      
-    </>
   );
 }
 
