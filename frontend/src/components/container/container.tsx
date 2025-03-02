@@ -1,7 +1,6 @@
 import BlogContainer from '../blog-container/blog-container'
 import BlogListContainer from '../blog-list-container/blog-list-container';
 import './container.css'
-import { useState } from 'react'
 
 function Container() {
   let test = {
@@ -37,9 +36,9 @@ function Container() {
   `
   };
   return (
-    <div className="flex justify-center h-full w-full">
-      {/* <BlogContainer {... test}/> */}
-      <BlogListContainer/>
+    <div className="flex justify-center h-full w-full overflow-auto">
+      <BlogContainer {... test}/>
+      {/* <BlogListContainer/> */}
     </div>
   )
 }

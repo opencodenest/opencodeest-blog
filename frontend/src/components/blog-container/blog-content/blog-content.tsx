@@ -15,7 +15,7 @@ export default function BlogContent({ content }: BlogPostProps) {
 
   return (
     <div
-      className="pb-10 blog-content"
+      className="blog-content"
       dangerouslySetInnerHTML={{ __html: content }}
     />
   );

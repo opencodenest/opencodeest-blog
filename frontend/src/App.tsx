@@ -1,8 +1,6 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import NavBar from './components/nav-bar/nav-bar'
+import Footer from './components/footer/footer'
 import Container from './components/container/container'
 
 function App() {
@@ -11,7 +9,7 @@ function App() {
     <div className="main-container h-full w-full">
     <NavBar/>
     <Container/>
-    {/* <h1>hello</h1> */}
+    <Footer/>
     </div>
   )
 }
