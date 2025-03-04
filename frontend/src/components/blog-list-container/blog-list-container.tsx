@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import BlogListCard from "./blog-list-card/blog-list-card";
 import './blog-list-container.css';
 import { Link } from 'react-router-dom';
-
+import config from '../../config';
 
 function BlogListContainer() {
   const [blogList, setBlogList] = useState([]);
@@ -12,7 +12,7 @@ function BlogListContainer() {
   useEffect(() => {
     const fetchBlogData = async () => {
       try {
-        const response = await fetch('http://localhost:3000/api/blog-list');
+        const response = await fetch(`${config.apiUrl}/blog-list`);
         if (!response.ok) {
           throw new Error('Failed to fetch blog list');
         }

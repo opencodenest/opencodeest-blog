@@ -3,6 +3,7 @@ import BlogContent from "./blog-content/blog-content";
 import BlogHeader from "./blog-header/blog-header";
 import "./blog-container.css";
 import { useParams } from 'react-router-dom';
+import config from '../../config';
 
 interface BlogPostDataProps {
   title: string;
@@ -21,7 +22,7 @@ function BlogContainer() {
   useEffect(() => {
     const fetchBlogData = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/api/blog/${slug}`);
+        const response = await fetch(`${config.apiUrl}/blog/${slug}`);
         if (!response.ok) {
           throw new Error('Failed to fetch blog data');
         }
