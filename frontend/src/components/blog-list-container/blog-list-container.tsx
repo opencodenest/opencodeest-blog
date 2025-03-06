@@ -1,13 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import BlogListCard from "./blog-list-card/blog-list-card";
 import './blog-list-container.css';
 import { Link } from 'react-router-dom';
 import config from '../../config';
 
+interface Blog {
+  slug: string;
+  title: string;
+  author: string;
+  readTime: string;
+  date: string;
+  summary: string;
+  imageUrl: string;
+  [key: string]: any;
+}
+
 function BlogListContainer() {
-  const [blogList, setBlogList] = useState([]);
+  const [blogList, setBlogList] = useState<Blog[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchBlogData = async () => {
@@ -16,10 +27,14 @@ function BlogListContainer() {
         if (!response.ok) {
           throw new Error('Failed to fetch blog list');
         }
-        const data = await response.json();
+        const data: Blog[] = await response.json(); // Type assertion
         setBlogList(data);
       } catch (err) {
-        setError(err.message);
+        if (err instanceof Error) {
+          setError(err.message);
+        } else {
+          setError("An unknown error occurred.");
+        }
       } finally {
         setLoading(false);
       }
@@ -40,8 +55,8 @@ function BlogListContainer() {
     <div className="pl-4 pr-4 sm:pl-0 sm:pr-0 pt-30 w-200 h-full text-lg">
       <div className="flex flex-col gap-6">
         {blogList.map((blog, index) => (
-          <Link to={`/blog/${blog.slug}`} className="block">
-          <BlogListCard key={index} {...blog} />
+          <Link key={index} to={`/blog/${blog.slug}`} className="block">
+            <BlogListCard {...blog} />
           </Link>
         ))}
       </div>
