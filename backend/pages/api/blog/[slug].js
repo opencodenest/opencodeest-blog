@@ -1,23 +1,27 @@
-import sqlite3 from 'sqlite3';
-import { open } from 'sqlite';
+import { Pool } from 'pg';
+
+const pool = new Pool({
+  user: 'your-username',
+  host: 'your-cloud-sql-instance-ip',
+  database: 'your-database-name',
+  password: 'your-password',
+  port: 5432,
+});
 
 export default async function handler(req, res) {
   const { slug } = req.query;
 
   if (req.method === 'GET') {
     try {
-      const db = await open({
-        filename: './mydb.sqlite', // Path to your SQLite database
-        driver: sqlite3.Database,
-      });
+      const client = await pool.connect();
+      const result = await client.query('SELECT * FROM blogs WHERE slug = $1', [slug]);
+      client.release();
 
-      const blog = await db.get('SELECT * FROM blogs WHERE slug = ?', slug);
-
-      await db.close();
       res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
       res.setHeader('Access-Control-Allow-Origin', '*');
-      if (blog) {
-        res.status(200).json(blog);
+
+      if (result.rows.length > 0) {
+        res.status(200).json(result.rows[0]);
       } else {
         res.status(404).json({ error: 'Blog not found' });
       }
