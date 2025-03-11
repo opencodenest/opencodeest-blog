@@ -1,11 +1,14 @@
 import { Pool } from 'pg';
+import dotenv from 'dotenv';
+
+dotenv.config(); // Load environment variables
 
 const pool = new Pool({
-  user: 'your-username',
-  host: 'your-cloud-sql-instance-ip',
-  database: 'your-database-name',
-  password: 'your-password',
-  port: 5432, // Default PostgreSQL port
+  user: process.env.PGUSER,
+  host: process.env.PGHOST,
+  database: process.env.PGDATABASE,
+  password: process.env.PGPASSWORD,
+  port: parseInt(process.env.PGPORT, 10),
 });
 
 export default async function handler(req, res) {
